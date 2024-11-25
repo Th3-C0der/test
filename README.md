@@ -140,27 +140,31 @@ FROM Person;
 9. PL/SQL code to print the largest of three numbers
 ```
 DECLARE
-num1 NUMBER := 10;
-num2 NUMBER := 20;
-num3 NUMBER := 15;
-largest NUMBER;
+  num1 NUMBER := 10;
+  num2 NUMBER := 20;
+  num3 NUMBER := 15;
+  largest NUMBER;
 BEGIN
-IF num1 > num2 AND num1 > num3 THEN
-largest := num1;
-ELSIF num2 > num3 THEN
-largest := num2;
-ELSE
-largest := num3;
-END IF;
-DBMS_OUTPUT.PUT_LINE('The largest number is: ' || largest);
+  IF num1 > num2 AND num1 > num3 THEN
+    largest := num1;
+  ELSIF num2 > num3 THEN
+    largest := num2;
+  ELSE
+    largest := num3;
+  END IF;
+  DBMS_OUTPUT.PUT_LINE('The largest number is: ' || largest);
 END;
+```
 10. PL/SQL code to print the sum of `n` odd numbers using a `FOR` loop
+```
 DECLARE
-n NUMBER := 5; -- Change this to any number
-sum_odd NUMBER;
+   n NUMBER := 10;
+   sum_odd  NUMBER := 0;
 BEGIN
-sum_odd := n * n; -- Using the formula
-DBMS_OUTPUT.PUT_LINE('The sum of first ' || n || ' odd numbers is: ' || sum_odd);
+   FOR i IN 1..n LOOP
+      sum_odd := sum_odd + (2 * i - 1); 
+   END LOOP;
+   DBMS_OUTPUT.PUT_LINE('The sum of the first ' || n || ' odd numbers is: ' || sum_odd);
 END;
 ```
 11. Create a table for Airways, use `ALTER` command
