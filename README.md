@@ -1,23 +1,24 @@
 1: Write a program to:
 ```
-a. Print any built in data set of R
+# a. Print any built in data set of R
 data() # will give all inbuilt datasets
-b. Get information about the data set.
+# b. Get information about the data set.
 df <- data.frame(iris)
 df
 str(df) # information of dataset
-c. Find dimensions of the data set and view the names of the variables
+# c. Find dimensions of the data set and view the names of the variables
 cat("Dimensions of inbuilt dataset iris are:",dim(df),"\n")
-d. Find the name of each row in the first column.
+# d. Find the name of each row in the first column.
 cat("Names of each rows in 1st column are:",rownames(df),"\n")
-e. Print all the values of any variable of your choice from the data set.
+# e. Print all the values of any variable of your choice from the data set.
 cat("All values in column petal length",(df$Petal.Length),"\n")
-f. Get a statistical summary of the data set.
+# f. Get a statistical summary of the data set.
 cat("Summary of iris dataset is:",summary(df))
+```
 Conclusion: The iris dataset contains 150 observations of iris flowers with 4 numeric attributes
 and a categorical variable. Exploring its structure, dimensions, and summary statistics provides
 a clear understanding of its features for analysis.
-```
+
 2: Write a program:
 ```
 a. To Load and Print any built in data set in R.
@@ -44,8 +45,9 @@ install.packages("e1071") # Installing the package
 library(e1071) # Load the package
 skewness_value<- skewness(data)
 print(skewness_value)
-Conclusion: These calculations summarize variability and symmetry of data distributions.
 ```
+Conclusion: These calculations summarize variability and symmetry of data distributions.
+
 4: Write a program:
 ```
 a. To perform Spearman Rank Correlation Test to evaluate the association between two
@@ -62,8 +64,9 @@ print("Negative Correlation")
 } else {
 print("Zero Correlation")
 }
-Conclusion: Spearman correlation captures monotonic relationships.
 ```
+Conclusion: Spearman correlation captures monotonic relationships.
+
 5: Write a program:
 a. Calculate the probability of getting heads when flipping a fair coin
 ```
@@ -78,8 +81,9 @@ b. Calculate the probability of drawing a spade from a standard deck of 52 cards
 deck <- rep(c("Spades", "Hearts", "Diamonds", "Clubs"), each = 13)
 classical_prob_spade <- length(deck[deck == "Spades"]) / length(deck)
 cat("Probability of drawing a Spade:", classical_prob_spade, "\n")
-Conclusion: Probabilities quantify the likelihood of outcomes.
 ```
+Conclusion: Probabilities quantify the likelihood of outcomes.
+
 7: Write a program:
 a. To Use Bayes Theorem in R.
 ```
@@ -93,17 +97,23 @@ pCloudyRain <- 0.85
 # Bayes theorem result
 pRainCloudy <- bayesTheorem(pRain, pCloudy, pCloudyRain)
 cat("P(Rain | Cloudy):", pRainCloudy, "\n")
-Conclusion: Bayes theorem allows updating beliefs based on new evidence.
 ```
+Conclusion: Bayes theorem allows updating beliefs based on new evidence.
+
 8: Write a program:
 ```
 a. For implementation of Extrapolation in R.
 extrapolate <- function(x, y, xp) if (xp < min(x)) y[1] + diff(y) / diff(x) * (xp - x[1]) else y[2] + diff(y) /
 diff(x) * (xp - x[2])
 cat("Extrapolated:", extrapolate(c(0.3, 0.5), c(1.8, 2.1), 1.2), "\n")
+```
 Conclusion: Extrapolation extends patterns in existing data.
+
 10: Write a program:
+
 a. Based on Chi-Square Distribution using dchisq, pchisq, qchisq and rchisq functions
+
+```
 # dchisq
 df <- 6
 vec <- 1:4
