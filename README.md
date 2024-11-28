@@ -1,197 +1,126 @@
-1. Create a table Employee with Emp(EMP_NO, NAME, DEPARTMENT_NO, DEPARTMENT_NAME, JOB_ID, SALARY)
+1: Write a program to:
 ```
-CREATE TABLE Employee (
-EMP_NO NUMBER(5) PRIMARY KEY,
-NAME VARCHAR2(50),
-DEPARTMENT_NO NUMBER(5),
-DEPARTMENT_NAME VARCHAR2(50),
-JOB_ID VARCHAR2(10),
-SALARY NUMBER(10, 2)
-);
-– Insert values
-INSERT INTO Employee VALUES (101, 'John Smith', 10, 'Finance', 'FIN001', 75000.00);
-– Display table
-SELECT * FROM Employee;
+a. Print any built in data set of R
+data() # will give all inbuilt datasets
+b. Get information about the data set.
+df <- data.frame(iris)
+df
+str(df) # information of dataset
+c. Find dimensions of the data set and view the names of the variables
+cat("Dimensions of inbuilt dataset iris are:",dim(df),"\n")
+d. Find the name of each row in the first column.
+cat("Names of each rows in 1st column are:",rownames(df),"\n")
+e. Print all the values of any variable of your choice from the data set.
+cat("All values in column petal length",(df$Petal.Length),"\n")
+f. Get a statistical summary of the data set.
+cat("Summary of iris dataset is:",summary(df))
+Conclusion: The iris dataset contains 150 observations of iris flowers with 4 numeric attributes
+and a categorical variable. Exploring its structure, dimensions, and summary statistics provides
+a clear understanding of its features for analysis.
 ```
-2. Create a table for employee, use ALTER and RENAME commands
+2: Write a program:
 ```
--- Create table
-CREATE TABLE Employee (
-EMP_NO NUMBER(5) PRIMARY KEY,
-NAME VARCHAR2(50),
-DEPARTMENT_NO NUMBER(5),
-DEPARTMENT_NAME VARCHAR2(50),
-SALARY NUMBER(10, 2)
-);
-– Insert values
-INSERT INTO Employee VALUES (101, 'John Smith', 10, 'Finance', 'FIN001', 75000.00);
-– Display table
-SELECT * FROM Employee;
--- Alter table to add a new column
-ALTER TABLE Employee ADD JOIN_DATE DATE;
--- Rename the table
-RENAME Employee TO Employee_Details;
-– Display renamed table
-SELECT * FROM Employee_Details;
+a. To Load and Print any built in data set in R.
+# sample dataset
+monthly_sales <- c(120, 150, 130, 160, 170, 180, 160, 170, 200, 210, 190,220)
+b. Calculate Variance.
+sales-vari <- var(monthly-sales)
+cat ("The variance in monthly sales is:", sales-vari)
+c. Calculate Standard Deviation.
+sales-sd <- sd(monthly_sales)
+d. Calculate Range
+range(iris$Sepal.Length)
+e. Calculate Mean Deviation and Skewness.
+# Sample data
+data<- c(5, 7, 8, 9, 10)
+# MEAN
+mean_value<- mean(data)
+# Calculate mean deviation
+mean_deviation<- mean(abs(data - mean_value))
+# Print the result
+print(paste("Mean Deviation:", mean_deviation))
+#SKEWNESS
+install.packages("e1071") # Installing the package
+library(e1071) # Load the package
+skewness_value<- skewness(data)
+print(skewness_value)
+Conclusion: These calculations summarize variability and symmetry of data distributions.
 ```
-3. Create a table Student, insert values into it
+4: Write a program:
 ```
-CREATE TABLE Student (
-ROLL_NO NUMBER(5) PRIMARY KEY,
-NAME VARCHAR2(50),
-SUBJECT VARCHAR2(50),
-DEPARTMENT_NAME VARCHAR2(50),
-MARKS NUMBER(5)
-);
--- Insert values
-INSERT INTO Student VALUES (1, 'John Doe', 'Mathematics', 'Science', 85);
-INSERT INTO Student VALUES (2, 'Jane Smith', 'Physics', 'Science', 90);
-– Display table
-SELECT * FROM Student;
+a. To perform Spearman Rank Correlation Test to evaluate the association between two
+variables and interpret the result.
+x <- mtcars$mpg; y <- mtcars$wt
+cat("Spearman Correlation:", cor(x, y, method = "spearman"), "\n")
+print(cor.test(x, y, method = "spearman"))
+result = cor(x,y,method ="spearman")
+#using cor() method
+if(result>0) {
+print("Positive Correlation")
+} else if(result<0) {
+print("Negative Correlation")
+} else {
+print("Zero Correlation")
+}
+Conclusion: Spearman correlation captures monotonic relationships.
 ```
-4. Create a table for employee, use INSERT and UPDATE commands
+5: Write a program:
+a. Calculate the probability of getting heads when flipping a fair coin
 ```
-CREATE TABLE Employee (
-EMP_NO NUMBER(5) PRIMARY KEY,
-NAME VARCHAR2(50),
-DEPARTMENT_NO NUMBER(5),
-DEPARTMENT_NAME VARCHAR2(50),
-JOB_ID VARCHAR2(10),
-SALARY NUMBER(10, 2)
-);
--- Insert values
-INSERT INTO Employee VALUES (101, 'Alice', 1, 'HR', 'HR01', 50000);
-INSERT INTO Employee VALUES (102, 'Bob', 2, 'Finance', 'FIN01', 60000);
-– Display table
-SELECT * FROM Employee;
--- Update command
-UPDATE Employee SET SALARY = SALARY + 5000 WHERE EMP_NO = 101;
+# Probability of heads
+outcomes <- c("Heads", "Tails")
+classical_prob <- length(outcomes[outcomes == "Heads"]) / length(outcomes)
+cat("Probability of getting Heads:", classical_prob, "\n")
 ```
-5. Create a table Employee, insert values, display employees whose salary is between
-20000 and 50000
+b. Calculate the probability of drawing a spade from a standard deck of 52 cards.
 ```
-CREATE TABLE Employee (
-EMP_NO NUMBER(5) PRIMARY KEY,
-NAME VARCHAR2(50),
-DEPARTMENT_NO NUMBER(5),
-DEPARTMENT_NAME VARCHAR2(50),
-CITY VARCHAR2(50),
-SALARY NUMBER(10, 2)
-);
--- Insert values
-INSERT INTO Employee VALUES (1, 'Alice', 1, 'HR', 'New York', 30000);
-INSERT INTO Employee VALUES (2, 'Bob', 2, 'Finance', 'Chicago', 25000);
-INSERT INTO Employee VALUES (3, 'Clark', 3, 'IT', 'California', 60000);
--- Display employees with salary between 20000 and 50000
-SELECT * FROM Employee WHERE SALARY BETWEEN 20000 AND 50000;
+# Probability of drawing a spade
+deck <- rep(c("Spades", "Hearts", "Diamonds", "Clubs"), each = 13)
+classical_prob_spade <- length(deck[deck == "Spades"]) / length(deck)
+cat("Probability of drawing a Spade:", classical_prob_spade, "\n")
+Conclusion: Probabilities quantify the likelihood of outcomes.
 ```
-6. Create a table Student, insert values, display students with marks above 15
+7: Write a program:
+a. To Use Bayes Theorem in R.
 ```
-CREATE TABLE Student (
-Stu_NO NUMBER(5) PRIMARY KEY,
-NAME VARCHAR2(50),
-SUBJECT VARCHAR2(50),
-DEPARTMENT_NAME VARCHAR2(50),
-MARKS NUMBER(5)
-);
--- Insert values
-INSERT INTO Student VALUES (1, 'Alice', 'Mathematics', 'Science', 20);
-INSERT INTO Student VALUES (2, 'Jake', 'Physics', 'Science', 10);
--- Display students with marks above 15
-SELECT * FROM Student WHERE MARKS > 15;
+bayesTheorem <- function(pA, pB, pBA) {
+return((pA * pBA) / pB)
+}
+# Example probabilities
+pRain <- 0.2
+pCloudy <- 0.4
+pCloudyRain <- 0.85
+# Bayes theorem result
+pRainCloudy <- bayesTheorem(pRain, pCloudy, pCloudyRain)
+cat("P(Rain | Cloudy):", pRainCloudy, "\n")
+Conclusion: Bayes theorem allows updating beliefs based on new evidence.
 ```
-7. Create a table Person, apply INITCAP, LTRIM, and UPPER functions
+8: Write a program:
 ```
-CREATE TABLE Person (
-FIRST_NAME VARCHAR2(50),
-LAST_NAME VARCHAR2(50),
-ADDRESS VARCHAR2(100),
-CITY VARCHAR2(50)
-);
--- Insert values
-INSERT INTO Person VALUES ('Alex', 'Zander', ' 123 Main St', 'new york');
--- Apply functions
-SELECT
-INITCAP(FIRST_NAME) AS Capitalized_First_Name,
-LTRIM(ADDRESS) AS Trimmed_Address,
-UPPER(CITY) AS Uppercase_City
-FROM Person;
+a. For implementation of Extrapolation in R.
+extrapolate <- function(x, y, xp) if (xp < min(x)) y[1] + diff(y) / diff(x) * (xp - x[1]) else y[2] + diff(y) /
+diff(x) * (xp - x[2])
+cat("Extrapolated:", extrapolate(c(0.3, 0.5), c(1.8, 2.1), 1.2), "\n")
+Conclusion: Extrapolation extends patterns in existing data.
+10: Write a program:
+a. Based on Chi-Square Distribution using dchisq, pchisq, qchisq and rchisq functions
+# dchisq
+df <- 6
+vec <- 1:4
+print("Density function values:")
+print(dchisq(vec, df))
+# pchisq
+df <- 5
+print("Calculating P(X ≤ 5):")
+print(pchisq(5, df, lower.tail = TRUE))
+print("Calculating P(X > 5):")
+print(1 - pchisq(5, df))
+# qchisq
+print("75th percentile (Q):")
+print(qchisq(0.75, df))
+# rchisq
+x <- rchisq(50000, df)
+hist(x, freq = FALSE, xlim = c(0, 16), ylim = c(0, 0.2))
+curve(dchisq(x, df), from = 0, to = 15, col = 'red', lwd = 2, add = TRUE)
 ```
-8. Create a table Person, apply 3 aggregate functions
-```
-CREATE TABLE Person (
-FIRST_NAME VARCHAR2(50),
-LAST_NAME VARCHAR2(50),
-SALARY NUMBER(10, 2),
-CITY VARCHAR2(50)
-);
--- Insert rows into the updated Person table
-INSERT INTO Person VALUES ('Alice', 'Smith', 60000.00, 'Los Angeles');
-INSERT INTO Person VALUES ('Bob', 'Brown', 75000.00, 'Chicago');
-INSERT INTO Person VALUES ('Clark', 'Williams', 50000.00, 'California');
--- Apply aggregate functions
-SELECT
-COUNT(*) AS Total_People,
-MIN(SALARY) AS Minimum_Salary,
-MAX(SALARY) AS Maximum_Salary,
-AVG(SALARY) AS Average_Salary
-FROM Person;
-```
-9. PL/SQL code to print the largest of three numbers
-```
-DECLARE
-  num1 NUMBER := 10;
-  num2 NUMBER := 20;
-  num3 NUMBER := 15;
-  largest NUMBER;
-BEGIN
-  IF num1 > num2 AND num1 > num3 THEN
-    largest := num1;
-  ELSIF num2 > num3 THEN
-    largest := num2;
-  ELSE
-    largest := num3;
-  END IF;
-  DBMS_OUTPUT.PUT_LINE('The largest number is: ' || largest);
-END;
-```
-10. PL/SQL code to print the sum of `n` odd numbers using a `FOR` loop
-```
-DECLARE
-   n NUMBER := 10;
-   sum_odd  NUMBER := 0;
-BEGIN
-   FOR i IN 1..n LOOP
-      sum_odd := sum_odd + (2 * i - 1); 
-   END LOOP;
-   DBMS_OUTPUT.PUT_LINE('The sum of the first ' || n || ' odd numbers is: ' || sum_odd);
-END;
-```
-11. Create a table for Airways, use `ALTER` command
-```
-CREATE TABLE Airways (
-FLIGHT_NO NUMBER(5) PRIMARY KEY,
-AIRLINE_NAME VARCHAR2(50),
-DESTINATION VARCHAR2(50)
-);
--- Alter table to add a new column
-ALTER TABLE Airways ADD DEPARTURE_TIME DATE;
-– Display table
-SELECT * FROM Airways ;
-```
-12. Create a table for Railways, use `INSERT` and `UPDATE` commands
-```
-CREATE TABLE Railways (
-TRAIN_NO NUMBER(5) PRIMARY KEY,
-TRAIN_NAME VARCHAR2(50),
-SOURCE VARCHAR2(50),
-DESTINATION VARCHAR2(50)
-);
--- Insert values
-INSERT INTO Railways VALUES (4101, 'Local', 'Dahanu Road', 'Churchgate');
-INSERT INTO Railways VALUES (4102, 'AC', 'Virar', 'Borivali');
--- Update command
-UPDATE Railways SET DESTINATION = 'Dadar' WHERE TRAIN_NO = 4102;
-– Display table
-SELECT * FROM Railways;
-```
+Conclusion: Chi-square functions are useful for hypothesis testing and modeling variability.
