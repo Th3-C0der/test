@@ -1,136 +1,263 @@
-1: Write a program to:
+PR - 1
 ```
-# a. Print any built in data set of R
-data() # will give all inbuilt datasets
-# b. Get information about the data set.
+# a) Print a built-in dataset
+
+# Printing the built-in 'mtcars' dataset
+
+print(mtcars)
+
+# b) Get information about the dataset
+
+# Using the 'str()' function to get the structure of the dataset
+
+str(mtcars)
+
+# Using the 'ncol()' and 'nrow()' functions to get the number of rows and columns
+
+cat("Number of rows in the dataset:", nrow(mtcars), "\n")
+
+cat("Number of columns in the dataset:", ncol(mtcars), "\n")
+
+# c) Find dimensions of the dataset and view the names of the variables
+
+# Dimensions can be obtained using the 'dim()' function
+
+# Variable names can be viewed using the 'names()' function
+
+cat("Dimensions of the dataset:", dim(mtcars), "\n")
+
+cat("Names of the variables:", names(mtcars), "\n")
+
+# d) Find name of each row in the first column
+
+# We can use the row names along with the first column to display them
+
+cat("Names of rows in the first column:", rownames(mtcars), "\n")
+
+# e) Print all the values of any variable of your choice from the dataset
+
+# Printing all the values of the 'mpg' (miles per gallon) variable
+
+cat("Values of the 'mpg' variable:", mtcars$mpg, "\n")
+
+# f) Get statistical summary of the dataset
+
+# Using the 'summary()' function to get the statistical summary
+
+cat("Statistical summary of the dataset:\n")
+
+summary(mtcars)
+```
+
+PR - 2
+```
+# a) Load and print a built-in dataset in R
+
 df <- data.frame(iris)
-df
-str(df) # information of dataset
-# c. Find dimensions of the data set and view the names of the variables
-cat("Dimensions of inbuilt dataset iris are:",dim(df),"\n")
-# d. Find the name of each row in the first column.
-cat("Names of each rows in 1st column are:",rownames(df),"\n")
-# e. Print all the values of any variable of your choice from the data set.
-cat("All values in column petal length",(df$Petal.Length),"\n")
-# f. Get a statistical summary of the data set.
-cat("Summary of iris dataset is:",summary(df))
-```
-Conclusion: The iris dataset contains 150 observations of iris flowers with 4 numeric attributes
-and a categorical variable. Exploring its structure, dimensions, and summary statistics provides
-a clear understanding of its features for analysis.
 
-2: Write a program:
-```
-a. To Load and Print any built in data set in R.
-# sample dataset
-monthly_sales <- c(120, 150, 130, 160, 170, 180, 160, 170, 200, 210, 190,220)
-b. Calculate Variance.
-sales-vari <- var(monthly-sales)
-cat ("The variance in monthly sales is:", sales-vari)
-c. Calculate Standard Deviation.
-sales-sd <- sd(monthly_sales)
-d. Calculate Range
-range(iris$Sepal.Length)
-e. Calculate Mean Deviation and Skewness.
-# Sample data
-data<- c(5, 7, 8, 9, 10)
-# MEAN
-mean_value<- mean(data)
-# Calculate mean deviation
-mean_deviation<- mean(abs(data - mean_value))
-# Print the result
-print(paste("Mean Deviation:", mean_deviation))
-#SKEWNESS
-install.packages("e1071") # Installing the package
-library(e1071) # Load the package
-skewness_value<- skewness(data)
-print(skewness_value)
-```
-Conclusion: These calculations summarize variability and symmetry of data distributions.
+print(df)
 
-4: Write a program:
+# b) Calculate Variance
+
+# Calculating the variance of the Sepal.Length column
+
+cat("Variance of Sepal.Length:", var(df$Sepal.Length), "\n")
+
+# c) Calculate Standard Deviation
+
+# Calculating the standard deviation of Sepal.Length column
+
+cat("Standard Deviation of Sepal.Length:", sd(df$Sepal.Length), "\n")
+
+# d) Calculate Range
+
+# The range is the difference between the maximum and minimum values
+
+range_sepal_length <- range(df$Sepal.Length)
+
+cat("Range of Sepal.Length: From", range_sepal_length[1], "to", range_sepal_length[2], "\n")
+
+# e) Calculate Mean Deviation and Skewness
+
+# Mean deviation is the average of absolute differences from the mean
+
+mean_deviation_sepal_length <- mean(abs(df$Sepal.Length - mean(df$Sepal.Length)))
+
+cat("Mean Deviation of Sepal.Length:", mean_deviation_sepal_length, "\n")
 ```
-a. To perform Spearman Rank Correlation Test to evaluate the association between two
-variables and interpret the result.
-x <- mtcars$mpg; y <- mtcars$wt
-cat("Spearman Correlation:", cor(x, y, method = "spearman"), "\n")
-print(cor.test(x, y, method = "spearman"))
-result = cor(x,y,method ="spearman")
-#using cor() method
-if(result>0) {
-print("Positive Correlation")
-} else if(result<0) {
-print("Negative Correlation")
+```
+# To calculate skewness, we need the 'e1071' package (for skewness function)
+
+install.packages("e1071")
+
+library(e1071)
+
+# Skewness of Sepal.Length
+
+cat("Skewness of Sepal.Length:", skewness(df$Sepal.Length), "\n")
+
+Conclusion:
+
+Statistical measures such as variance, standard deviation, range, mean de
+```
+
+PR - 4
+```
+# Load the 'mtcars' dataset
+
+df <- data.frame(mtcars)
+
+# a) Perform Spearman Rank Correlation Test
+
+cor_test <- cor(df$mpg, df$wt, method="spearman")
+
+# Displaying results of the Spearman Rank Correlation Test
+
+cat("Spearman Rank Correlation Test Results:\n")
+
+cat("Correlation Coefficient:", cor_test, "\n")
+
+# Interpreting the correlation coefficient
+
+if (cor_test > 0) {
+
+cat("Positive correlation\n")
+
+} else if(cor_test < 0) {
+
+cat("Negative correlation\n")
+
 } else {
-print("Zero Correlation")
+
+cat("Zero or no correlation\n")
+
 }
 ```
-Conclusion: Spearman correlation captures monotonic relationships.
+PR - 5
+```
+# a) Calculate the probability of getting heads when flipping a fair coin
 
-5: Write a program:
-a. Calculate the probability of getting heads when flipping a fair coin
-```
-# Probability of heads
-outcomes <- c("Heads", "Tails")
-classical_prob <- length(outcomes[outcomes == "Heads"]) / length(outcomes)
-cat("Probability of getting Heads:", classical_prob, "\n")
-```
-b. Calculate the probability of drawing a spade from a standard deck of 52 cards.
-```
-# Probability of drawing a spade
-deck <- rep(c("Spades", "Hearts", "Diamonds", "Clubs"), each = 13)
-classical_prob_spade <- length(deck[deck == "Spades"]) / length(deck)
-cat("Probability of drawing a Spade:", classical_prob_spade, "\n")
-```
-Conclusion: Probabilities quantify the likelihood of outcomes.
+outcomes <- c("heads", "tails")
 
-7: Write a program:
-a. To Use Bayes Theorem in R.
+total_outcomes <- length(outcomes) # Total no. of possible outcomes
+
+favourable_outcomes <- length(outcomes[outcomes=="heads"])
+
+# No. of outcomes in which we get a head
+
+prob_head <- favourable_outcomes / total_outcomes
+
+cat("Probability of getting a head when flipping a fair coin:", prob_head, "\n")
+
+# Calculate the probability of drawing a spade from a standard deck of 52 cards.
+
+deck <- rep(c("spades", "hearts", "diamonds", "clubs"), each = 13)
+
+total_cards <- length(deck)
+
+spades <- length(deck[deck == "spades"])
+
+prob_spade <- spades / total_cards
+
+cat("Probability of drawing a spade from a standard deck of cards:", prob_spade, "\n")
 ```
-bayesTheorem <- function(pA, pB, pBA) {
-return((pA * pBA) / pB)
+PR - 7
+```
+# a) Use Bayes Theorem in R
+
+# Suppose we know the following probabilities:
+
+# P(rain) = 0.20
+
+# P(cloudy) = 0.40
+
+# P(cloudy|rain) = 0.85
+
+# To calculate P(rain|cloudy):
+
+P_R <- 0.2
+
+P_C <- 0.4
+
+P_CR <- 0.85
+
+P_RC <- P_CR * P_R / P_C # P(rain|cloudy)
+
+cat("P(rain|cloudy):", P_RC)
+```
+PR - 8
+```
+extrapolation <- function(x, y, xp) {
+
+n <- length(x)
+
+if (xp < min(x)) { # if value to be predicted is smaller than available range
+
+slope <- (y[2] - y[1]) / (x[2] - x[1])
+
+yp <- y[1] + slope * (xp - x[1])
+
+} else if (xp > max(x)) { # if value to be predicted is larger than available range
+
+slope <- (y[n] - y[n - 1]) / (x[n] - x[n - 1])
+
+yp <- y[n] + slope * (xp - x[n])
+
+} else { # if value to be predicted falls within the available range
+
+stop("xp must be outside the range of x for extrapolation") # Stops program execution
+
 }
-# Example probabilities
-pRain <- 0.2
-pCloudy <- 0.4
-pCloudyRain <- 0.85
-# Bayes theorem result
-pRainCloudy <- bayesTheorem(pRain, pCloudy, pCloudyRain)
-cat("P(Rain | Cloudy):", pRainCloudy, "\n")
-```
-Conclusion: Bayes theorem allows updating beliefs based on new evidence.
 
-8: Write a program:
-```
-a. For implementation of Extrapolation in R.
-extrapolate <- function(x, y, xp) if (xp < min(x)) y[1] + diff(y) / diff(x) * (xp - x[1]) else y[2] + diff(y) /
-diff(x) * (xp - x[2])
-cat("Extrapolated:", extrapolate(c(0.3, 0.5), c(1.8, 2.1), 1.2), "\n")
-```
-Conclusion: Extrapolation extends patterns in existing data.
+return (yp)
 
-10: Write a program:
+}
 
-a. Based on Chi-Square Distribution using dchisq, pchisq, qchisq and rchisq functions
+#Main Program
 
+x <-c( 0.3, 0.5, 0.7, 0.9)
+
+y <- c(1.8, 2.1, 2.4, 2.7)
+
+xp <- 1.2
+
+extrapolated_value <- extrapolation(x, y, xp)
+
+cat("Extrapolated value at x = 1.2 is", extrapolated_value, "\n")
 ```
-# dchisq
-df <- 6
-vec <- 1:4
-print("Density function values:")
-print(dchisq(vec, df))
-# pchisq
-df <- 5
-print("Calculating P(X ≤ 5):")
-print(pchisq(5, df, lower.tail = TRUE))
-print("Calculating P(X > 5):")
-print(1 - pchisq(5, df))
-# qchisq
-print("75th percentile (Q):")
-print(qchisq(0.75, df))
-# rchisq
-x <- rchisq(50000, df)
-hist(x, freq = FALSE, xlim = c(0, 16), ylim = c(0, 0.2))
-curve(dchisq(x, df), from = 0, to = 15, col = 'red', lwd = 2, add = TRUE)
+PR - 10
 ```
-Conclusion: Chi-square functions are useful for hypothesis testing and modeling variability.
+# a) Based on Chi-Square Distribution using dchisq, pchisq, qchisq, rchisq functions
+
+# Defining the intervals (x) and degrees of freedom (df)
+
+x <- seq(0, 5, by=1)
+
+df <- 2
+
+# 1. dchisq(): Chi-Square Probability Density Function (PDF)
+
+dchisq_vals <- dchisq(x, df)
+
+cat("The value of the probability density function up to x = 5 is:\n", dchisq_vals, "\n\n")
+
+# 2.pchisq(): Chi-Square Cumulative Distribution Function (CDF)
+
+pchisq_vals <- pchisq(x, df)
+
+cat("The cumulative probability up to x = 5 is:\n", pchisq_vals, "\n\n")
+
+# 3. qchisq(): Quantile function (Inverse CDF)
+
+# Calculating the quantile for the cumulative probability 0.95
+
+qchisq_vals <- qchisq(0.95, df)
+
+cat("The quantile for the cumulative probability 0.95 is:", qchisq_vals, "\n\n")
+
+# 4. rchisq(): Generate random values from a Chi-Square distribution
+
+rchisq_vals <- rchisq(10, df)
+
+cat("10 random values from a Chi-Square distribution with df = 2:\n", rchisq_vals, "\n")
+```
