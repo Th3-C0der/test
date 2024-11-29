@@ -249,7 +249,9 @@ obj = D()
 obj.method_a() # Output: Method from A
 obj.method_b() # Output: Method from B
 obj.method_c() # Output: Method from C
+```
 (e) Hierarchical Inheritance
+```
 class Parent:
 def greet(self):
 print("Hello from Parent!")
